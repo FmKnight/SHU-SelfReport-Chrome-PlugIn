@@ -1,0 +1,42 @@
+{
+  "manifest_version": 2,
+  "name": "SHU每日一报小助手",
+  "version": "6.23",
+
+  "description": "自动执行每日一报和历史补报",
+  "icons": {
+    "16": "icons/bg_16.png",
+    "48": "icons/bg_48.png",
+    "128": "icons/bg_128.png"
+  },
+  "author": "FM",
+
+  "browser_action": {
+    "default_icon": "icons/bg_48.png",
+    "default_popup": "popup.html",
+    "default_title": "SHU每日一报小助手"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://selfreport.shu.edu.cn/*"],
+      "js": ["lib/jquery-2.2.0.min.js", "scripts/day_report.js"]
+      
+    },
+    {
+      "matches": ["https://selfreport.shu.edu.cn/ReportHistory.aspx"],
+      "js": ["lib/jquery-2.2.0.min.js", "scripts/history_report.js"]
+    },
+    {
+      "matches": ["https://newsso.shu.edu.cn/login/*"],
+      "js": ["lib/jquery-2.2.0.min.js", "scripts/auth.js"]
+      
+    }
+
+  ],
+
+  "permissions": [
+    "tabs",
+    "activeTab"
+  ]
+}
